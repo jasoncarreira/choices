@@ -1,0 +1,109 @@
+<template>
+  <require from="./slider-value"></require>
+  <require from="./date-format"></require>
+  <require from="./currency-format"></require>
+  <require from="./percent-format"></require>
+  <require from="./chart"></require>
+
+  <section class="au-animate">
+    <div class="row">
+      <div class="col s6">
+        <div class="row"><div class="col s12">
+        <slider-value property-name.two-way="retirementAge" min="62" max="70" change.delegate="onRetirementAgeChange()"
+                      label="Retirement Age"></slider-value>
+
+
+        <slider-value property-name.two-way="retirementIncomePercentage" min="70" max="120"
+                      change.delegate="onRetirementIncomePercentageChanged()"
+                      label="Retirement Income Percentage"></slider-value>
+
+
+        <slider-value repeat.for="account of whatifInput.accounts" property-name.two-way="account.contribution" min="0"
+                      max="18500" step="100"
+                      change.delegate="onContributionChanged()"
+                      label="${account.name} Contribution"></slider-value>
+
+        <button md-button class="right" click.delegate="reset()">Reset</button>
+        </div> </div>
+        <div class="row"><div class="col s12">
+        <md-card md-title="Your Choices">
+          <div>
+
+            <p>
+              Hi ${user.firstName} ${user.lastName}! Your Choices let's you get a look at your
+              retirement outlook and
+              experiment with the changes you can make to reach your goals. You've told us you're <span style="color: ${settings.accentColor}">${user.age}</span>
+              years old, make <span style="color: ${settings.accentColor}">${user.salary | currencyFormat}</span> / year, and you've told us about <span style="color: ${settings.accentColor}">${user.accounts.length}</span>
+              <span if.bind="(user.accounts.length > 1) || (user.accounts.length < 1)"> accounts.</span><span if.bind="(user.accounts.length == 1)"> account.</span>
+            </p>
+            <p>
+              Your Choices let's you estimate how much you'll need in retirement as a percentage of your current salary.
+              Right now we're estimating you need <span style="color: ${settings.accentColor}">${retirementIncomePercentage / 100| percentFormat}</span> of your annual salary in
+              retirement (<span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.neededTotalRetirementIncome | currencyFormat}</span>). We
+              estimate that in <span style="color: ${settings.accentColor}">${whatifInput.retirementAge - user.age}</span> years when you retire at
+              <span style="color: ${settings.accentColor}">${whatifInput.retirementAge}</span> your retirement
+              accounts will be worth <span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.totalRetirementBalance | currencyFormat}</span>.
+              That <span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.totalRetirementBalance | currencyFormat}</span> can
+              provide you a sustainable retirement income of <span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.availableRetirementIncome | currencyFormat}</span> / year. In
+              addition we
+              estimate that you should have a social security income of <span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.socialSecurityIncome | currencyFormat}</span>.
+              Together these sources of income
+              <span if.bind="whatifOutput.simulationResult.gapOrSurplus > 100">give you a surplus of <span style="color: ${settings.accentColor}">${whatifOutput.simulationResult.gapOrSurplus | currencyFormat}</span>/year.</span>
+              <span if.bind="whatifOutput.simulationResult.gapOrSurplus < -100">leave you with an income gap of <span style="color: ${settings.primaryColor}">${whatifOutput.simulationResult.gapOrSurplus | currencyFormat}</span>/year.</span>
+              <span if.bind="(whatifOutput.simulationResult.gapOrSurplus <= 100) && (whatifOutput.simulationResult.gapOrSurplus >= -100)">meet your retirement income needs.</span>
+
+            </p>
+
+          </div>
+        </md-card>
+        </div> </div>
+
+      </div>
+      <div class="col s6">
+        <chart id="chart" data.bind="whatifOutput.simulationResult"></chart>
+        <table class="results-table">
+          <thead>
+          <tr>
+            <th></th>
+            <th>Base Case</th>
+            <th>What If</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>Total Retirement Balance</td>
+            <td>${baseOutput.simulationResult.totalRetirementBalance | currencyFormat}</td>
+            <td>${whatifOutput.simulationResult.totalRetirementBalance | currencyFormat}</td>
+          </tr>
+          <tr repeat.for="account of whatifInput.accounts" as-element="tr">
+            <td>${account.name} Retirement Balance</td>
+            <td>${baseOutput.simulationResult.retirementBalances[$index] | currencyFormat}</td>
+            <td>${whatifOutput.simulationResult.retirementBalances[$index] | currencyFormat}</td>
+          </tr>
+          <tr>
+            <td>Required Retirement Income</td>
+            <td>${baseOutput.simulationResult.neededTotalRetirementIncome | currencyFormat}</td>
+            <td>${whatifOutput.simulationResult.neededTotalRetirementIncome | currencyFormat}</td>
+          </tr>
+          <tr>
+            <td>Estimated Retirement Account Income</td>
+            <td>${baseOutput.simulationResult.availableRetirementIncome | currencyFormat}</td>
+            <td>${whatifOutput.simulationResult.availableRetirementIncome | currencyFormat}</td>
+          </tr>
+          <tr>
+            <td>Estimated Social Security Income</td>
+            <td>${baseOutput.simulationResult.socialSecurityIncome | currencyFormat}</td>
+            <td>${whatifOutput.simulationResult.socialSecurityIncome | currencyFormat}</td>
+          </tr>
+          <tr>
+            <td>Chance of Success</td>
+            <td>${baseOutput.simulationResult.chanceOfSuccess | percentFormat}</td>
+            <td>${whatifOutput.simulationResult.chanceOfSuccess | percentFormat}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</template>

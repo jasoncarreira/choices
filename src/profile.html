@@ -1,0 +1,65 @@
+<template>
+
+  <require from="./int-format"></require>
+  <require from="./currency-format"></require>
+  <require from="./percent-format"></require>
+
+
+  <div class="row">
+    <div class="col s12"><h2>User Profile</h2></div>
+  </div>
+  <div class="row">
+    <div class="col s5">
+      <md-input md-label="First Name" md-value.bind="user.firstName"></md-input>
+      <md-input md-label="Last Name" md-value.bind="user.lastName"></md-input>
+      <md-input md-label="Age" md-value.bind="user.age | intFormat" md-type="number"></md-input>
+      <md-input md-label="Retirement Age" md-value.bind="user.retirementAge | intFormat" md-type="number"></md-input>
+      <md-input md-label="Salary" md-value.bind="user.salary | intFormat" md-type="number"></md-input>
+    </div>
+    <div class="col s5 offset-s2 flow-text">
+      <md-card md-title="Your Choices">
+        <div>
+          <p>
+            Your Choices let's you get a look at your retirement outlook and experiment with the changes you can make to
+            reach your goals.To get started tell us about you. With your age and the age you plan to retire we know how long you have to
+            save. The amount you'll need in retirement is based off your current salary so you can maintain the lifestyle you're
+            accustomed to. Add accounts below to let us know what you're doing already to plan for retirement.
+          </p>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <table class="results-table hover-table">
+        <thead>
+        <tr>
+          <th>Account Name</th>
+          <th>Type</th>
+          <th>Balance</th>
+          <th>Contribution</th>
+          <th>Asset Allocation</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr repeat.for="account of user.accounts" click.delegate="editAccount(account)" as-element="tr">
+          <td>${account.name}</td>
+          <td>${account.type}</td>
+          <td>${account.balance | currencyFormat}</td>
+          <td>${account.contribution | currencyFormat}</td>
+          <td>S${account.stockPercentage/100 | percentFormat} B${account.bondPercentage/100 |
+            percentFormat} C${account.cashPercentage/100 | percentFormat}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div clas="row">
+    <div class="col s12">
+      <button md-button class="left" click.delegate="addAccount()">Add Account</button>
+      <button md-button class="right" click.delegate="saveUser()">Save User</button>
+    </div>
+  </div>
+</template>

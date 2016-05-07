@@ -1,0 +1,14 @@
+<template bindable="router">
+  <md-colors md-primary-color.bind="settings.primaryColor" md-accent-color.bind="settings.accentColor"></md-colors>
+  <md-navbar fixed="true">
+    <a href="#" class="brand-logo right"><span class="flow-text">${router.title}</span></a>
+    <ul class="left hide-on-med-and-down">
+      <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+        <a href.bind="row.href">${row.title}</a>
+      </li>
+      <li md-waves>
+        <a click.delegate="logout()">Log Out</a>
+      </li>
+    </ul>
+  </md-navbar>
+</template>

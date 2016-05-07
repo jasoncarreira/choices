@@ -1,0 +1,32 @@
+<template>
+  <require from="./int-format"></require>
+  <require from="./currency-format"></require>
+  <ai-dialog>
+    <ai-dialog-body>
+      <div class="row">
+        <div class="col s12"><h2>Edit Account ${account.name}</h2></div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <md-input md-label="Account Name" md-value.bind="account.name"></md-input>
+          <select md-select value.two-way="account.type">
+            <option value="" disabled selected>select an account type</option>
+            <option value="401k">401(k) / 403(b)</option>
+            <option value="hsa">HSA</option>
+          </select>
+          <md-input md-label="Account Balance" md-value.bind="account.balance | intFormat & debounce" md-type="number"></md-input>
+          <md-input md-label="Account Contribution" md-value.bind="account.contribution | intFormat & debounce" md-type="number"></md-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4"><md-input md-label="Stock %" md-value.bind="account.stockPercentage | intFormat" md-type="number"></md-input></div>
+        <div class="col s4"><md-input md-label="Bond %" md-value.bind="account.bondPercentage | intFormat" md-type="number"></md-input></div>
+        <div class="col s4"><md-input md-label="Cash %" md-value.bind="account.cashPercentage | intFormat" md-type="number"></md-input></div>
+    </ai-dialog-body>
+
+    <ai-dialog-footer>
+      <button md-button class="primary" click.trigger="cancel()">Cancel</button>
+      <button md-button click.trigger="ok()">Ok</button>
+    </ai-dialog-footer>
+  </ai-dialog>
+</template>
