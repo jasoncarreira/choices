@@ -37,13 +37,6 @@ export class Profile {
         console.log(response.output);
       });
     }
-
-  onSelectionChanged(e) {
-      let selected = this.list;//.getSelected();
-      // let names = selected.map(i => i.name);
-      // this.logger.log('selection changed: ' + names.join(', '));
-      // this.logger.log(`selection changed ${e.detail.item.name}`);
-    }
   
   addAccount() {
     this.editAccount(new Account(0,"","",0,0,0,0,0),true);
