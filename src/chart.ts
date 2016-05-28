@@ -19,7 +19,7 @@ export class ChartCustomElement {
   }
 
   dataChanged(data:SimulationResult) {
-    console.log('Chart dataChanged');
+    // console.log('Chart dataChanged width = ' + this.width + ", height = " + this.height);
     let chartData = ChartCustomElement.buildData(data);
     nv.addGraph(() => {
       this.chart = nv.models.pieChart()
@@ -60,8 +60,8 @@ export class ChartCustomElement {
   }
 
   resize(width:number, height: number) {
-    let v = Math.max(width,height);
-    this.width = this.height = v;
+    this.width = width;
+    this.height = height;
     this.chart.width(width);
       // .height(height);
     this.chart.update();
