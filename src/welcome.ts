@@ -6,6 +6,7 @@ import {Settings} from "./model/settings";
 import {autoinject} from "aurelia-dependency-injection";
 import {UserService} from "./service/user-service";
 import {InputService} from "./service/input-service";
+import {ChartCustomElement} from "./chart";
 
 @autoinject()
 export class Welcome {
@@ -16,6 +17,7 @@ export class Welcome {
   retirementIncomePercentage:number;
   whatifInput:CalculationInput;
   settings;
+  chart:ChartCustomElement;
 
   constructor(settings:Settings, private userService:UserService, private inputService:InputService) {
     this.settings = settings;
@@ -52,6 +54,10 @@ export class Welcome {
 
   onContributionChanged() {
     this.runSimulation();
+  }
+
+  resizeListener = (width, height) => {
+      this.chart.resize(width,height);
   }
 
   private runSimulation() {

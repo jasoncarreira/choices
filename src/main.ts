@@ -12,6 +12,7 @@ export function configure(aurelia: Aurelia) {
     .standardConfiguration()
     // .developmentLogging()
     .plugin('aurelia-materialize-bridge', bridge => bridge.useAll() )
+    .plugin('aurelia-resize')
     .plugin('aurelia-dialog');
 
 

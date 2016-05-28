@@ -10,7 +10,9 @@ import PieChart = nv.PieChart;
 export class ChartCustomElement {
   @bindable data:SimulationResult;
   private element:Element;
-
+  private chart:PieChart;
+  private width = 550;
+  private height = 550;
 
   constructor(element:Element) {
     this.element = element;
@@ -19,8 +21,8 @@ export class ChartCustomElement {
   dataChanged(data:SimulationResult) {
     console.log('Chart dataChanged');
     let chartData = ChartCustomElement.buildData(data);
-    nv.addGraph(function () {
-      var chart:PieChart = nv.models.pieChart()
+    nv.addGraph(() => {
+      this.chart = nv.models.pieChart()
         .showLabels(true)     //Display pie labels
         .x((d) => {
           return d.label
@@ -33,14 +35,14 @@ export class ChartCustomElement {
         .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
         .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
         .labelsOutside(true)
-        .width(550)
-        .height(550)
+        .width(this.width)
+        .height(this.height)
         .title(numeral(data.neededTotalRetirementIncome).format('($0,0)'))
         .donutRatio(0.60)     //Configure how big you want the donut hole size to be.
         ;
 
-      chart.tooltip.enabled(true);
-      chart.tooltip.contentGenerator((d) => {
+      this.chart.tooltip.enabled(true);
+      this.chart.tooltip.contentGenerator((d) => {
         return d.data.label + ' ' + numeral(d.data.value).format('($0,0)')
       });
 
@@ -48,13 +50,21 @@ export class ChartCustomElement {
         // .append("svg")
         .datum(chartData)
         .transition().duration(800)
-        .call(chart);
+        .call(this.chart);
 
-      nv.utils.windowResize(chart.update);
+      // nv.utils.windowResize(this.chart.update);
 
-      return chart;
+      return this.chart;
     });
 
+  }
+
+  resize(width:number, height: number) {
+    let v = Math.max(width,height);
+    this.width = this.height = v;
+    this.chart.width(width);
+      // .height(height);
+    this.chart.update();
   }
 
   static buildData(simulationResult:SimulationResult):Object[] {
