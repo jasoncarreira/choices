@@ -1,10 +1,10 @@
 <template>
   <div class="row section valign-wrapper">
-    <div class="col s5 flow-text">${label}</div>
-    <div class="col s1">  <md-input md-value.two-way="propertyName & debounce:200" md-min.bind="min" md-max.bind="max"
+    <div class="col s4 m4 l5 flow-text">${label}</div>
+    <div class="col s2 m2 l1">  <md-input md-value.two-way="propertyName & debounce:200" md-min.bind="min" md-max.bind="max"
                 change.delegate="onPropertyChange($event)"></md-input>
       </div>
-      <div class="col s6">
+      <div class="col s6 m6 l6">
         <md-range md-value.two-way="propertyName & debounce:200" md-min.bind="min" md-max.bind="max" md-step.bind="step"
                   change.delegate="onPropertyChange($event)"></md-range>
       </div>
