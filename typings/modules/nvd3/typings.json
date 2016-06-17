@@ -1,0 +1,22 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/jgoz/typed-nvd3/c3f5cf63b9f6f9dd086d7bb785a2b522dfaae7d0/typings.json",
+    "raw": "registry:npm/nvd3#1.8.3+20160501004949",
+    "main": "index.d.ts",
+    "version": "^1.8.3",
+    "global": false,
+    "dependencies": {
+      "d3": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-d3/8bb38bb0ef0a48ac273f6045c26753260ea089df/typings.json",
+        "raw": "registry:npm/d3#3.0.0+20160211003958",
+        "main": "index.d.ts",
+        "global": false,
+        "name": "d3",
+        "type": "typings"
+      }
+    },
+    "name": "nvd3",
+    "type": "typings"
+  }
+}

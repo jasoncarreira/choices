@@ -1,4 +1,4 @@
-import {Router, RouterConfiguration} from 'aurelia-router'
+import {Router, RouterConfiguration} from 'aurelia-router';
 import {Settings} from "./model/settings";
 import {AuthorizeStep} from "./authentication-step";
 

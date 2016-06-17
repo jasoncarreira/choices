@@ -2,9 +2,11 @@ import {inject} from "aurelia-dependency-injection";
 import {bindable} from "aurelia-framework";
 import {SimulationResult} from "./model/simulation-result";
 import * as numeral from "numeral";
-import "novus/nvd3";
+// import "novus/nvd3";
 import "novus/nvd3/build/nv.d3.css!";
-import PieChart = nv.PieChart;
+import * as nv from "nvd3";
+import {PieChart} from "nvd3";
+import * as d3 from "d3";
 
 @inject(Element)
 export class ChartCustomElement {
