@@ -20,7 +20,7 @@ export class Profile {
   }
 
   activate() {
-    this.user = this.userService.loadUser().clone();
+    this.user = this.userService.getUser().clone();
     this.newUser = (this.user.id == 0);
   }
 

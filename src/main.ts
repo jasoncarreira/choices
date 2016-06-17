@@ -3,6 +3,8 @@
 import {Aurelia} from 'aurelia-framework';
 import {LogManager} from 'aurelia-framework';
 import {ConsoleAppender} from 'aurelia-logging-console';
+import {UserService} from "./service/user-service";
+import {LocalUserService} from "./service/local-user-service";
 
 LogManager.addAppender(new ConsoleAppender());
 LogManager.setLevel(LogManager.logLevel.debug);
@@ -22,5 +24,8 @@ export function configure(aurelia: Aurelia) {
   //Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
   //aurelia.use.plugin('aurelia-html-import-template-loader')
 
-  aurelia.start().then(() => aurelia.setRoot());
+  aurelia.start().then(() => {
+    aurelia.container.registerSingleton(UserService, LocalUserService)
+    aurelia.setRoot()
+  });
 }

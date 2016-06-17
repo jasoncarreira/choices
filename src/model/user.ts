@@ -7,9 +7,13 @@ export class User {
   retirementAge:number;
   salary:number;
   accounts:Account[];
+  email:string;
+  password:string;
 
-  constructor(id:number, firstName:string, lastName:string, age:number, retirementAge:number, salary:number, accounts:Account[]) {
+  constructor(id:number, email: string, password: string, firstName:string, lastName:string, age:number, retirementAge:number, salary:number, accounts:Account[]) {
     this.id = id;
+    this.email = email;
+    this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
@@ -19,6 +23,6 @@ export class User {
   }
 
   clone(): User {
-    return new User(this.id,this.firstName,this.lastName,this.age,this.retirementAge,this.salary,this.accounts.map(account => account.clone()));
+    return new User(this.id,this.email, this.password, this.firstName,this.lastName,this.age,this.retirementAge,this.salary,this.accounts.map(account => account.clone()));
   }
 }

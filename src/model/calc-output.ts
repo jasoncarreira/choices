@@ -16,6 +16,4 @@ export class CalculationOutput {
     output.runDate = this.runDate;
     return output;
   }
-
-
 }

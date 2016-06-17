@@ -24,7 +24,7 @@ export class Welcome {
   }
 
   activate() {
-    this.user = this.userService.loadUser().clone();
+    this.user = this.userService.getUser().clone();
     let baseInput = new CalculationInput(this.user);
     this.baseOutput = Simulation.runCalculation(baseInput);
     this.setupWhatif();

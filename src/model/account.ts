@@ -2,6 +2,16 @@ export class Account {
   public static TYPE_401K = '401k';
   public static TYPE_HSA = 'HSA';
 
+  id:number;
+  name:string;
+  type:string;
+  balance:number;
+  contribution:number;
+  cashPercentage:number;
+  bondPercentage:number;
+  stockPercentage:number;
+  retirementBalance:number;
+
   constructor(id:number, name:string, type:string, balance:number, contribution:number, cashPercentage:number, bondPercentage:number, stockPercentage:number) {
     this.id = id;
     this.name = name;
@@ -18,14 +28,4 @@ export class Account {
     this2.retirementBalance = this.retirementBalance;
     return this2;
   }
-
-  id:number;
-  name:string;
-  type:string;
-  balance:number;
-  contribution:number;
-  cashPercentage:number;
-  bondPercentage:number;
-  stockPercentage:number;
-  retirementBalance:number;
 }
