@@ -19,7 +19,7 @@ export class LocalUserService extends UserService {
   
   login(email:string, password:string) : User {
     let user = this.loadUser();
-    if (user && user.email === email && user.password === password) {
+    if (user && user.emailAddress === email && user.password === password) {
       return user;
     } else {
       this.logout();

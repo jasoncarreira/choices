@@ -10,11 +10,21 @@
   </div>
   <div class="row">
     <div class="col s5">
-      <md-input md-label="First Name" md-value.bind="user.firstName"></md-input>
-      <md-input md-label="Last Name" md-value.bind="user.lastName"></md-input>
-      <md-input md-label="Age" md-value.bind="user.age | intFormat" md-type="number"></md-input>
-      <md-input md-label="Retirement Age" md-value.bind="user.retirementAge | intFormat" md-type="number"></md-input>
-      <md-input md-label="Salary" md-value.bind="user.salary | intFormat" md-type="number"></md-input>
+      <form validation-renderer="materialize-form" validation-errors.bind="formErrors">
+      <md-input md-label="First Name" md-value.bind="user.firstName & validate"></md-input>
+      <md-input md-label="Last Name" md-value.bind="user.lastName & validate"></md-input>
+      <md-input md-label="Email" md-value.bind="user.emailAddress & validate" md-type="email" md-validate="true"></md-input>
+      <md-input md-label="Password" md-value.bind="user.password & validate" md-type="password"></md-input>
+      <md-input md-label="Age" md-value.bind="user.age | intFormat & validate" md-type="number"></md-input>
+      <md-input md-label="Retirement Age" md-value.bind="user.retirementAge | intFormat & validate" md-type="number"></md-input>
+      <md-input md-label="Salary" md-value.bind="user.salary | intFormat & validate" md-type="number"></md-input>
+      </form>
+      <ul>
+        <li repeat.for="errorInfo of formErrors">
+          ${errorInfo.error.message}
+          <a href="#" click.delegate="errorInfo.target.querySelector('input').focus()"> Fix it</a>
+        </li>
+      </ul>
     </div>
     <div class="col s5 offset-s2 flow-text">
       <md-card md-title="Your Choices">

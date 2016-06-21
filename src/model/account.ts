@@ -1,15 +1,24 @@
+import {required} from "aurelia-validatejs";
 export class Account {
   public static TYPE_401K = '401k';
   public static TYPE_HSA = 'HSA';
 
   id:number;
+  @required
   name:string;
+  @required
   type:string;
+  @required
   balance:number;
+  @required
   contribution:number;
+  @required
   cashPercentage:number;
+  @required
   bondPercentage:number;
+  @required
   stockPercentage:number;
+  @required
   retirementBalance:number;
 
   constructor(id:number, name:string, type:string, balance:number, contribution:number, cashPercentage:number, bondPercentage:number, stockPercentage:number) {

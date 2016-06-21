@@ -12,7 +12,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.2.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.2.0.1",
@@ -32,6 +31,8 @@ System.config({
     "aurelia-templating-binding": "npm:aurelia-templating-binding@1.0.0-beta.2.0.2",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.3.0.4",
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0-beta.2.0.2",
+    "aurelia-validatejs": "npm:aurelia-validatejs@0.5.2",
+    "aurelia-validation": "npm:aurelia-validation@0.9.2",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
@@ -47,6 +48,7 @@ System.config({
     "numeral": "npm:numeral@1.5.3",
     "nvd3": "npm:nvd3@1.8.3",
     "text": "github:systemjs/plugin-text@0.0.3",
+    "validatejs": "npm:validatejs@0.0.2",
     "github:Dogfalo/materialize@0.97.6": {
       "css": "github:systemjs/plugin-css@0.1.23",
       "jquery": "npm:jquery@2.2.4"
@@ -216,6 +218,18 @@ System.config({
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.2.0.1",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.2.0.1"
     },
+    "npm:aurelia-validatejs@0.5.2": {
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.2.0.1",
+      "aurelia-validation": "npm:aurelia-validation@0.9.2",
+      "validate.js": "npm:validate.js@0.10.0"
+    },
+    "npm:aurelia-validation@0.9.2": {
+      "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.2.0.7",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.2.1.1",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.2.0.1",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.2.0.1",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.3.0.3"
+    },
     "npm:babel-runtime@5.8.38": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -266,6 +280,9 @@ System.config({
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:validate.js@0.10.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:vm-browserify@0.0.4": {
