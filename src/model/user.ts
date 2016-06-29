@@ -1,6 +1,6 @@
 import {Account} from "./account";
 export class User {
-  id:number;
+  id:string;
   firstName:string;
   lastName:string;
   age:number;
@@ -10,7 +10,7 @@ export class User {
   email:string;
   password:string;
 
-  constructor(id:number, email: string, password: string, firstName:string, lastName:string, age:number, retirementAge:number, salary:number, accounts:Account[]) {
+  constructor(id:string, email: string, password: string, firstName:string, lastName:string, age:number, retirementAge:number, salary:number, accounts:Account[]) {
     this.id = id;
     this.email = email;
     this.password = password;

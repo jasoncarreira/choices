@@ -1,0 +1,21 @@
+<template>
+  <ai-dialog>
+    <ai-dialog-body>
+      <div class="row">
+        <div class="col s12"><h2>YourChoices Login</h2></div>
+      </div>
+      <div class="row">
+        <div class="col s6 offset-s3">
+          <md-input md-label="Email" md-value.bind="email"></md-input>
+          <md-input md-label="Password" md-value.bind="password" md-type="password"></md-input>
+        </div>
+      </div>
+    </ai-dialog-body>
+
+    <ai-dialog-footer class="right">
+
+      <button md-button class="left" click.delegate="doLogin()">Log In</button>
+      <button md-button class="primary" click.delegate="cancel()">Cancel</button>
+    </ai-dialog-footer>
+  </ai-dialog>
+</template>

@@ -8,7 +8,7 @@
     "aurelia-binding": "github:aurelia/binding/dist/aurelia-binding.d.ts#69d54dbebafe87738f89b8ac4109921544d202cb",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper/dist/aurelia-bootstrapper.d.ts#111ee4eb1e5df7af39305d190d635df7d93cb7e5",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection/dist/aurelia-dependency-injection.d.ts#dcb53d40d128f5ff89c6bafa587128583529bd68",
-    "aurelia-dialog": "github:aurelia/event-dialog/dist/aurelia-dialog.d.ts#702a73e6e26ea2c9fc3c17c376ee4be5757956e6",
+
     "aurelia-event-aggregator": "github:aurelia/event-aggregator/dist/aurelia-event-aggregator.d.ts#7a38c51dc9082175461e2d0b21a4c0a9242a8925",
     "aurelia-fetch-client": "github:aurelia/fetch-client/dist/aurelia-fetch-client.d.ts#a97fa7b9484cd78d986b11e537394400c99d02fe",
     "aurelia-framework": "github:aurelia/framework/dist/aurelia-framework.d.ts#e008c4a98147ae39556892a69e5c165947e293a7",

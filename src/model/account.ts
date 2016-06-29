@@ -2,7 +2,8 @@ export class Account {
   public static TYPE_401K = '401k';
   public static TYPE_HSA = 'HSA';
 
-  id:number;
+  id:string;
+  ownerId: string;
   name:string;
   type:string;
   balance:number;
@@ -12,8 +13,9 @@ export class Account {
   stockPercentage:number;
   retirementBalance:number;
 
-  constructor(id:number, name:string, type:string, balance:number, contribution:number, cashPercentage:number, bondPercentage:number, stockPercentage:number) {
+  constructor(id:string, ownerId:string, name:string, type:string, balance:number, contribution:number, cashPercentage:number, bondPercentage:number, stockPercentage:number) {
     this.id = id;
+    this.ownerId = ownerId;
     this.name = name;
     this.type = type;
     this.balance = balance;
@@ -24,7 +26,7 @@ export class Account {
   }
 
   clone():Account {
-    let this2 = new Account(this.id, this.name, this.type, this.balance, this.contribution, this.cashPercentage, this.bondPercentage, this.stockPercentage);
+    let this2 = new Account(this.id, this.ownerId, this.name, this.type, this.balance, this.contribution, this.cashPercentage, this.bondPercentage, this.stockPercentage);
     this2.retirementBalance = this.retirementBalance;
     return this2;
   }
